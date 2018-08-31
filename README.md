@@ -8,13 +8,14 @@ This package uses dill for model persistence. Dill needs to be installed before 
 
 ## Usage
 
-The command line for this project uses flags to specify what type of data should be processed, and what type of model should be used. 
+The command line for this project uses flags to specify what type of data should be processed, and what type of model should be used.
 
 The CLI can be run with `./cli.py` if python3 is on the PATH and if `cli.py` has the +x permission. Otherwise, `python3 cli.py` can be used.
 
 An explanation of the parameters allowed can be shown using `./cli.py -h`.
 
-A sample output is provided below, but the CLI have been updated since then.
+A sample output is provided below, but the CLI may have been updated since then.
+
 ```
 usage: cli.py [-h] -t
               {regression,ridge,perceptron,svm,decision_trees,nearest_neighbour,bayes,all}
@@ -38,7 +39,6 @@ optional arguments:
   -r, --re-train        Re-train the model.
 ```
 
-
 ### Running with an external validation set
 
 To run the analysis with an external validation set, the following command should be used:
@@ -52,6 +52,5 @@ The predicted results can also be outputted to sys.stdout by omitting the `-o` p
 ```sh
 ./cli.py -d wc -t regression -i validation_set.csv
 ```
-
 
 **IMPORTANT: It is required that the validation data to be tested have the target columns removed.** For example, testing data for the World Cup dataset should have the `Total_scores` and `Match_result` removed.
