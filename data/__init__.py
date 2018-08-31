@@ -61,7 +61,12 @@ class occupancy():
         train_data = train_data.copy()
         test_data = test_data.copy()
 
-        X_train = train_data.drop(['date', 'Occupancy'], axis=1)
+        # day_of_week = []
+        # hour = []
+        # minute = []
+
+        X_train = train_data.drop(
+            ['date', 'HumidityRatio', 'Occupancy'], axis=1)
 
         y_train_classification = train_data['Occupancy']
 
