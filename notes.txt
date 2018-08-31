@@ -1,4 +1,0 @@
-Report:
-- talk about what used for validation
-- talk about feature extractions
-- hyperparameters
