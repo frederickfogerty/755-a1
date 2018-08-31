@@ -144,7 +144,7 @@ def display_performance(model, dataset, type):
         # print("MSE: %.2f"
         #       % MSE)
         # print('r^2 score: %.2f' % r2)
-        if (model['estimator_untuned']):
+        if ('estimator_untuned' in model):
             y_untuned_pred = model['predict'](model['X_test'])
             MSE_untuned = mean_squared_error(y_test, y_untuned_pred)
             r2_untuned = r2_score(y_test, y_untuned_pred)
@@ -201,7 +201,6 @@ The results for {0} are detailed in \\autoref{{{1}-{2}}}
 l
 r
 r
-r
 @{{}}}}
 \\toprule
 \\textbf{{Metric}} & \\textbf{{Training Value}} & \\textbf{{Test Value}} \\\\
@@ -232,39 +231,39 @@ $r^2$ & {4:.2f} & {6:.2f}\\\\
         accuracy_train = 100*accuracy_score(y_train, y_pred_train)
         cr_train = report2dict(classification_report(y_train, y_pred_train))
 
-        if (model['estimator_untuned']):
+        if ('estimator_untuned' in model):
             y_untuned_pred = model['predict'](model['X_test'])
             accuracy_untuned = 100*accuracy_score(y_test, y_untuned_pred)
             cr_untuned = report2dict(
                 classification_report(y_test, y_untuned_pred))
             print("""
-    \\subsubsection{{{0}}}
+\\subsubsection{{{0}}}
 
-    The results for {0} are detailed in \\autoref{{{1}-{2}}}
+The results for {0} are detailed in \\autoref{{{1}-{2}}}
 
-    \\begin{{table}}[H]
-    \\renewcommand{{\\arraystretch}}{{1.3}}
-    \\caption{{Performance for {0}}}
-    \\label{{{1}-{2}}}
-    \\centering
-    \\begin{{tabular}}{{
-    @{{}}
-    l
-    r
-    r
-    r
-    @{{}}}}
-    \\toprule
-    \\textbf{{Metric}} & \\textbf{{Training Value}} & \\textbf{{Tuned Value}} & \\textbf{{Untuned Value}}  \\\\
-    \\midrule
-    Accuracy & {3:.1f} & {7:.1f} & {11:.1f} \\\\
-    Precision & {4} & {8} & {12} \\\\
-    Recall & {5} & {9} & {13} \\\\
-    f1-score & {6} & {10} & {14} \\\\
+\\begin{{table}}[H]
+\\renewcommand{{\\arraystretch}}{{1.3}}
+\\caption{{Performance for {0}}}
+\\label{{{1}-{2}}}
+\\centering
+\\begin{{tabular}}{{
+@{{}}
+l
+r
+r
+r
+@{{}}}}
+\\toprule
+\\textbf{{Metric}} & \\textbf{{Training Value}} & \\textbf{{Tuned Value}} & \\textbf{{Untuned Value}}  \\\\
+\\midrule
+Accuracy & {3:.1f} & {7:.1f} & {11:.1f} \\\\
+Precision & {4} & {8} & {12} \\\\
+Recall & {5} & {9} & {13} \\\\
+f1-score & {6} & {10} & {14} \\\\
 
-    \\bottomrule
-    \\end{{tabular}}
-    \\end{{table}}
+\\bottomrule
+\\end{{tabular}}
+\\end{{table}}
     """.format(
                 TITLES[type],
                 dataset,
@@ -284,33 +283,32 @@ $r^2$ & {4:.2f} & {6:.2f}\\\\
             ))
         else:
             print("""
-    \\subsubsection{{{0}}}
+\\subsubsection{{{0}}}
 
-    The results for {0} are detailed in \\autoref{{{1}-{2}}}
+The results for {0} are detailed in \\autoref{{{1}-{2}}}
 
-    \\begin{{table}}[H]
-    \\renewcommand{{\\arraystretch}}{{1.3}}
-    \\caption{{Performance for {0}}}
-    \\label{{{1}-{2}}}
-    \\centering
-    \\begin{{tabular}}{{
-    @{{}}
-    l
-    r
-    r
+\\begin{{table}}[H]
+\\renewcommand{{\\arraystretch}}{{1.3}}
+\\caption{{Performance for {0}}}
+\\label{{{1}-{2}}}
+\\centering
+\\begin{{tabular}}{{
+@{{}}
+l
+r
+r
+@{{}}}}
+\\toprule
+\\textbf{{Metric}} & \\textbf{{Training Value}} & \\textbf{{Test Value}}  \\\\
+\\midrule
+Accuracy & {3:.1f} & {7:.1f} \\\\
+Precision & {4} & {8} \\\\
+Recall & {5} & {9} \\\\
+f1-score & {6} & {10} \\\\
 
-    @{{}}}}
-    \\toprule
-    \\textbf{{Metric}} & \\textbf{{Training Value}} & \\textbf{{Test Value}}  \\\\
-    \\midrule
-    Accuracy & {3:.1f} & {7:.1f} \\\\
-    Precision & {4} & {8} \\\\
-    Recall & {5} & {9} \\\\
-    f1-score & {6} & {10} \\\\
-
-    \\bottomrule
-    \\end{{tabular}}
-    \\end{{table}}
+\\bottomrule
+\\end{{tabular}}
+\\end{{table}}
     """.format(
                 TITLES[type],
                 dataset,
@@ -323,10 +321,6 @@ $r^2$ & {4:.2f} & {6:.2f}\\\\
                 cr['avg / total']['precision'],
                 cr['avg / total']['recall'],
                 cr['avg / total']['f1-score'],
-                accuracy_untuned,
-                cr_untuned['avg / total']['precision'],
-                cr_untuned['avg / total']['recall'],
-                cr_untuned['avg / total']['f1-score'],
             ))
 
 
@@ -416,6 +410,7 @@ def run():
 
     if (dataset == 'all'):
         for temp_dataset in dataset_models.keys():
+            print('\\subsection{{ {0} }}'.format(temp_dataset))
             if (type == 'all'):
                 for temp_type in dataset_models[temp_dataset]:
                     run_for(temp_dataset, temp_type, args)
