@@ -57,13 +57,8 @@ class occupancy():
 
     @staticmethod
     def extract(train_data, test_data=pd.DataFrame(columns=np.arange(26))):
-        # TODO: extract hour/minute, day of week and month
         train_data = train_data.copy()
         test_data = test_data.copy()
-
-        # day_of_week = []
-        # hour = []
-        # minute = []
 
         X_train = train_data.drop(
             ['date', 'HumidityRatio', 'Occupancy'], axis=1)
@@ -131,7 +126,6 @@ class wc():
 
     @staticmethod
     def extract(train_data, test_data=pd.DataFrame(columns=np.arange(26))):
-        # TODO: Remove features that can't be known before game
         train_data = train_data.copy()
         test_data = test_data.copy()
         test_data.insert(len(test_data.columns), 'Total_Scores', 0)
