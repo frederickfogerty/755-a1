@@ -1,0 +1,5 @@
+Match_ID,Date,Location,Phase,Team1,Team1_Continent,Team1_Attempts,Team1_Corners,Team1_Offsides,Team1_Ball_Possession(%),Team1_Pass_Accuracy(%),Team1_Distance_Covered,Team1_Ball_Recovered,Team1_Yellow_Card,Team1_Red_Card,Team1_Fouls,Team2,Team2_Continent,Team2_Attempts,Team2_Corners,Team2_Offsides,Team2_Ball_Possession(%),Team2_Pass_Accuracy(%),Team2_Distance_Covered,Team2_Ball_Recovered,Team2_Yellow_Card,Team2_Red_Card,Team2_Fouls,Normal_Time
+65,14/06/2018,Luzhniki Stadium,Group,RUSSIA,Europe,13,6,3,0.4,0.78,118,53,1,0,22,SAUDI ARABIA,Asia,6,2,1,0.6,0.86,105,48,1,0,10,Yes
+66,15/06/2018,Ekaterinburg Arena,Group,EGYPT,Africa,8,0,1,0.43,0.78,112,57,2,0,12,URUGUAY,South America,14,5,1,0.57,0.86,111,54,0,0,6,Yes
+67,15/06/2018,Saint Petersburg Stadium,Group,MOROCCO,Africa,13,5,0,0.64,0.86,101,38,1,0,22,IR IRAN,Asia,8,2,0,0.36,0.66,100,38,3,0,14,Yes
+68,15/06/2018,Fisht Stadium,Group,PORTUGAL,Europe,8,4,1,0.39,0.87,102,36,1,0,12,SPAIN,Europe,12,5,3,0.61,0.93,103,28,1,0,10,Yes
