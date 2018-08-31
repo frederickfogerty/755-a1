@@ -323,6 +323,42 @@ f1-score & {6} & {10} \\\\
                 cr['avg / total']['f1-score'],
             ))
 
+    if ('estimator_untuned' in model):
+        print("""
+The tuned hyper-parameters are detailed in \\autoref{{{1}-{2}-hyper}}
+
+\\begin{{table}}[H]
+\\renewcommand{{\\arraystretch}}{{1.3}}
+\\caption{{Hyperparameters for {0}}}
+\\label{{{1}-{2}-hyper}}
+\\centering
+\\begin{{tabular}}{{@{{}} l r @{{}}}}
+\\toprule
+\\textbf{{Parameter}} & \\textbf{{Value}} \\\\
+\\midrule
+""".format(
+            TITLES[type],
+            dataset,
+            type,
+        ))
+        best_params_ = model['estimator'].best_params_
+        for param in best_params_:
+            value = best_params_[param]
+            # print(param, value)
+            print("{0} & {1} \\\\".format(param, best_params_[param]))
+            # if (isinstance(value, str)):
+            #     print("{0} & {1} \\\\".format(param, best_params_[param]))
+            # else:
+            #     print("{0} & {1:.2f} \\\\".format(param, best_params_[param]))
+
+        print("""
+\\bottomrule
+\\end{{tabular}}
+\\end{{table}}
+""")
+
+        # pprint(model['estimator'].best_params_)
+
 
 def run_for(dataset, type, args):
     # print('========================================')
