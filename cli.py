@@ -145,7 +145,8 @@ def display_performance(model, dataset, type):
         #       % MSE)
         # print('r^2 score: %.2f' % r2)
         if ('estimator_untuned' in model):
-            y_untuned_pred = model['predict'](model['X_test'])
+            y_untuned_pred = model['estimator_untuned'].predict(
+                model['X_test'])
             MSE_untuned = mean_squared_error(y_test, y_untuned_pred)
             r2_untuned = r2_score(y_test, y_untuned_pred)
 
@@ -232,7 +233,8 @@ $r^2$ & {4:.2f} & {6:.2f}\\\\
         cr_train = report2dict(classification_report(y_train, y_pred_train))
 
         if ('estimator_untuned' in model):
-            y_untuned_pred = model['predict'](model['X_test'])
+            y_untuned_pred = model['estimator_untuned'].predict(
+                model['X_test'])
             accuracy_untuned = 100*accuracy_score(y_test, y_untuned_pred)
             cr_untuned = report2dict(
                 classification_report(y_test, y_untuned_pred))
